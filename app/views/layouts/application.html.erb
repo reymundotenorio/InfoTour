@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Infotours</title>
+
+    <!-- Responsive slider -->
+    <%= stylesheet_link_tag  'responsive-slider-parallax', media: 'all' %>
+
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- Datetime picker -->
+    <%= stylesheet_link_tag  'datepicker3', media: 'all' %>
+
+    <!-- DateTime picker Material -->
+    <%= stylesheet_link_tag  'bootstrap-material-datetimepicker', media: 'all' %>
+    <%= javascript_include_tag 'material.min' %>
+    <%= javascript_include_tag 'moment-with-locales.min' %>
+    <%= javascript_include_tag 'bootstrap-material-datetimepicker' %>
+
+    <!-- Payment Data -->
+   <%= stylesheet_link_tag 'font-awesome.min', media: 'all' %>
+
+    <!-- Login -->
+   <%= stylesheet_link_tag 'log-in', media: 'all' %>
+   <%= stylesheet_link_tag 'login-theme', media: 'all' %>
+   <%= stylesheet_link_tag 'animate-custom', media: 'all' %>
+   <%= javascript_include_tag 'placeholder-shim.min' %>
+
+    <!-- Application -->
+    <%= stylesheet_link_tag  'application', media: 'all' %>
+    <%= stylesheet_link_tag  'bootstrap.min', media: 'all'%>
+    <%= stylesheet_link_tag  'app', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <!-- Datetimepicker -->
+    <%= javascript_include_tag 'es' %>
+
+    <!-- Meta data -->
+    <%= csrf_meta_tags %>
+
+</head>
+<body id="cuerpo">
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- #fooimage "logo.png", ""
+          #link_to "Paquetes Infonica", root_path, class:"navbar-brand"
+
+          #link_to (fooimage "logo.png", "")+"Paquetes Infonica", root_path, class: "brand"
+      -->
+      <div class="zoom_img">
+        <div class="zoom">
+            <%= link_to (fooimage "logo.png", ""), root_path, class: "logo" %>
+            <%= link_to "InfoTours", root_path, class:"navbar-brand" %>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <% if current_page?(root_path) %>
+        <li class="active" class="zoom"><%= link_to "Inicio", root_path %><span class="sr-only">(current)</span></li>
+        <% else %>
+        <li><%= link_to "Inicio", root_path, class:"zoom_link" %></li>
+        <% end %>
+
+        <% if current_page?(products_path) %>
+        <li class="active"><%= link_to "Comprar", products_path %><span class="sr-only">(current)</span></li>
+        <% else %>
+        <li><%= link_to "Comprar", products_path %></li>
+        <% end %>
+
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if @cart.empty? %>
+        <% else %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <span class="glyphicon glyphicon-shopping-cart"></span>  <%= @cart.count %> - Articulos<span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-cart" role="menu">
+
+                <% @cart.each do | id, quantity |%>
+                <% product = Product.find_by_id(id) %>
+              <li >
+                  <span class="item">
+                    <span class="item-left">
+                    	<%=  image_tag product.avatar.url(:thumb), class: "img-responsive thumbnail"  %>
+                        <span class="item-info">
+                            <span><%= product.tiltle %></span>
+                            <%total_cart = product.price * quantity%>
+                            <span><%= number_to_currency(total_cart, unit: 'C$') %></span>
+                        </span>
+                    </span>
+                    <span class="item-right">
+                      <a href="/cart/remove/<%= product.id %>" type="button" class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove"></span> Eliminar</a></td>
+                    </span>
+                </span>
+              </li>
+
+                <li class="divider"></li>
+
+                <% end %>
+
+
+              <li class="divider"></li>
+              <li><%= link_to "Ver Carrito", cart_path, class:"text-center" %></li>
+          </ul>
+        </li>
+
+
+        <% end %>
+
+
+          <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Cerras sesion", destroy_user_session_path, method: :delete %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Editar perfil", edit_user_registration_path %> </li>
+            </ul>
+          </li>
+          <% else %>
+
+        <% if current_page?(new_user_session_path) %>
+        <li class="active"><%= link_to "Iniciar sesion", new_user_session_path %><span class="sr-only">(current)</span></li>
+        <% else %>
+        <li><%= link_to "Iniciar sesion", new_user_session_path %></li>
+        <% end %>
+
+        <% if current_page?(new_user_registration_path) %>
+        <li class="active"><%= link_to "Registrarse", new_user_registration_path %><span class="sr-only">(current)</span></li>
+        <% else %>
+        <li><%= link_to "Registrarse", new_user_registration_path %></li>
+        <% end %>
+
+          <% end %>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="content">
+<%= yield %>
+</div>
+
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+</body>
+</html>

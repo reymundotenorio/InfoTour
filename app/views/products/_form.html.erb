@@ -1,0 +1,236 @@
+<div class="container">
+
+  <div class="row">
+   <div class="col-xs-12-offset-3" id ="wrapper_1">
+
+<%= form_for @product, html: {:multipart => true} do |f| %>
+
+
+<!-- PACKAGE FORM STARTS HERE -->
+<div class="panel panel-default credit-card-box" id="form-body">
+    <div class="panel-heading display-table" id="PanelTitulo">
+        <div class="row display-tr" >
+            <h3 class="panel-title display-td" >Detalles del Paquete</h3>
+            <div class="display-td" >
+                  <img class="img-responsive pull-right" id="user-avatar" src="/img/Infonica.png">
+            </div>
+        </div>
+    </div>
+
+<!-- Date Picker 3 -->
+<!--
+ <div class="span5 col-md-5" id="sandbox-container">
+<label>Fecha y Hora</label>
+//rails f.text_field :date, readonly: true
+ </div>
+ -->
+
+ <div class="row">
+     <div class="col-xs-12">
+         <div class="form-group">
+             <label for="couponCode">Fecha y Hora del Paquete</label>
+
+             <div class="form-inline">
+               <div class="form-group">
+                 <div class="input-group">
+                 <%= f.text_field :date, id:"date", class:"form-control"%>
+                 <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+              <%= f.text_field :time, id:"time", class:"form-control"%>
+                <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div>
+              </div>
+             </div>
+
+             </div>
+
+         </div>
+     </div>
+ </div>
+
+
+
+<!-- DateTimePicker -->
+
+<!--
+
+<div style="overflow:hidden;">
+  <div class="form-group">
+          <div class="col-md-8">
+              <div id="datetimepicker"></div>
+          </div>
+  </div>
+
+  <div id="timepicker"></div>
+
+-->
+
+<!-- image_tag @product.avatar.url
+image_tag @product.avatar.url(:thumb)
+
+
+-->
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label for="couponCode">Fotografia del Paquete</label>
+
+            <%=  image_tag @product.avatar.url(:medium), class:"img-thumbnail", id:"Product_img" %>
+
+            <div class="row">
+            <%= f.file_field :avatar, id:"Select_Product_img", class:"btn btn-primary" %>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label for="couponCode">Nombre del Paquete</label>
+
+            <%= f.text_field :tiltle, class:"form-control",
+            placeholder:"Paquete #", required: true %>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label for="couponCode">Descripcion del paquete</label>
+
+          <%= f.text_area :description, class:"form-control",
+          placeholder:"Incluye...", required: true, rows:"8" %>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label for="couponCode">Precio del Paquete</label>
+
+    <%= f.number_field :price ,min:1, step: 1, value:100, class:"form-control", required: true%>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <label for="couponCode">No. de Cupos del Paquete</label>
+
+    <%= f.number_field :stock ,min:1, step: 1, value:1, class:"form-control", required: true%>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+  <div class="actions">
+    <%= f.submit 'Guardar', class:"btn btn-success btn-lg btn-block"  %>
+  </div>
+<% end %>
+
+
+
+</div>
+</div>
+</div>
+
+<script>
+
+$(function () {
+
+			$('#date').bootstrapMaterialDatePicker
+			({
+        lang : 'es',
+        format : 'DD/MM/YYYY',
+        time: false,
+        minDate : new Date()
+        //format : 'dddd, DD MMMM YYYY - hh:mm A',
+			});
+
+      $('#time').bootstrapMaterialDatePicker
+      ({
+          lang : 'es',
+          format : 'hh:mm A',
+          date: false
+      });
+
+/*
+
+$('#datetimepicker').datetimepicker({
+    format: 'DD/MM/YYYY - hh:mm A',
+    defaultDate: moment("12/02/2015 - 08:40 AM", "DD/MM/YYYY - hh:mm A"),
+    inline: true,
+    sideBySide: true,
+    locale: 'es',
+    minDate: moment("12/02/2015 - 08:40 AM", "DD/MM/YYYY - hh:mm A"),         //set a minimum date  <---- HERE
+    maxDate: moment("12/02/2015 - 08:40 AM", "DD/MM/YYYY - hh:mm A")
+
+});
+
+      $('#timepicker').datetimepicker({
+        format: 'hh:mm A',
+        defaultDate: moment("08:25 AM", "hh:mm A"),
+        inline: true,
+        sideBySide: true,
+        locale: 'es',
+        minDate: moment("08:25 AM", "hh:mm A"),         //set a minimum date  <---- HERE
+        maxDate: moment("08:25 AM", "hh:mm A")
+
+      });
+*/
+
+
+
+      /*
+      DATE PICKER 3
+      $('#sandbox-container input').datepicker({
+          format: "dd-MM-yyyy",
+          language: "es",
+          autoclose: true,
+          todayHighlight: true
+      });
+      */
+
+    });
+
+
+    function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+          f=files[0]
+          // Only process image files.
+          if (f.type.match('image.*')) {
+            var reader = new FileReader();
+            reader.onload = (function(theFile) {
+              return function(e) {
+                // alert(e.target.result);
+                document.getElementById("Product_img").src=e.target.result;
+              };
+            })(f);
+
+          // Read in the image file as a data URL.
+          reader.readAsDataURL(f);
+          }
+        }
+      document.getElementById('Select_Product_img').addEventListener('change', handleFileSelect, false);
+
+
+</script>

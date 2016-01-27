@@ -1,0 +1,131 @@
+<% if !@cart.empty? %>
+<div class="page-header">
+  <h1>Carrito de compras</h1>
+</div>
+<% end %>
+
+<% if @cart.empty? %>
+<div class="jumbotron" style="background-color:rgba(255,255,255,0.5); text-align:center; border-radius:10px;">
+  <h1>Tu carrito de compra esta vacio</h1>
+  <p>Debes realizar al menos una compra para agregar al carrito</p>
+  <p><%= link_to 'Comprar', products_path, class:"btn btn-primary btn-lg"%></p>
+</div>
+<% else %>
+<%= link_to 'Vaciar carrito de compras', cart_clear_path, class: "btn btn-warning btn-lg" %>
+<% end %>
+
+
+<br><br><br>
+
+<% if @cart.empty? %>
+<% else %>
+<div id="no-more-tables" style="background-color:rgba(255,255,255,0.8);">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="col-md-12 table-striped table-hover table-condensed cf">
+                <thead class="cf">
+                    <tr>
+                        <th><h4 class="text-center"></h4></th>
+                        <th><h4 class="text-center"></h4></th>
+                        <th><h4 class="text-center"></h4></th>
+                        <th><h4 class="text-center"></h4></th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                 <% subtotal = 0 %>
+
+                    <% @cart.each do | id, quantity |%>
+                    <% product = Product.find_by_id(id) %>
+                    <tr>
+                        <td data-title="Producto" class="col-sm-8 col-md-6">
+                        <div class="media">
+                          	<%=  image_tag product.avatar.url(:thumb), class: "img-responsive thumbnail"  %>
+                            <div class="media-body">
+                                <h4 class="media-heading"><%= link_to product.tiltle, product%></h4>
+                                <h5 class="media-heading">  <span class="text-success"><strong>Descripcion:</strong> </span>
+                                   <%= product.description %></h5>
+
+                            </div>
+                        </div></td>
+                        <td  data-title="Cantidad" class="col-sm-1 col-md-1" style="text-align: center">
+                          <strong>
+                          <ul class="nav nav-pills">
+                            <li class="active" style="font-size:15px;"> Cantidad <span class="badge" style="font-size:15px;"><%= quantity %></span></li>
+                          </ul>
+                          </strong>
+
+                        </td>
+                        <td data-title="Precio" class="col-sm-1 col-md-1 text-center">
+                        <strong>
+                          <ul class="nav nav-pills">
+                            <li class="active" style="font-size:15px;">Precio <span class="badge" style="font-size:15px;"><%= number_to_currency(product.price, unit: '$') %></span></li>
+                          </ul>
+                        </strong>
+                      </td>
+                        <% unit_total = product.price * quantity %>
+
+                        <td data-title="Total" class="col-sm-1 col-md-1 text-center">
+                        <strong>
+                          <ul class="nav nav-pills">
+                          <li class="active"  style="font-size:18px;">Total <span class="badge" style="font-size:18px;"><%= number_to_currency(unit_total, unit: '$')%></span></li>
+                          </ul>
+                        </strong>
+                          </td>
+                        <td class="col-sm-1 col-md-1">
+                          <a href="/cart/remove/<%= product.id %>" type="button" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-remove"></span> Eliminar
+                        </a></td>
+                    </tr>
+
+                  <% subtotal += product.price * quantity%>
+
+
+                  <% end %>
+
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>Sub total</h5></td>
+                        <td class="text-right"><h5><strong><%= number_to_currency(subtotal, unit: '$') %></strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>I.V.A. (15%)</h5></td>
+                        <% iva = subtotal * 0.15 %>
+                        <td class="text-right"><h5><strong><%= number_to_currency(iva, unit: '$') %></strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h3>Total</h3></td>
+                        <% total = subtotal + iva %>
+                        <td class="text-right"><h3><strong><%= number_to_currency(total, unit: '$') %></strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>
+
+                          <a href="<%= products_path %>" type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue comprando
+                        </a></td>
+                        <td>
+                        <button type="button" class="btn btn-success">
+                            Facturar <span class="glyphicon glyphicon-play"></span>
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+<% end %>

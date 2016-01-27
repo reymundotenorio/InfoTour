@@ -1,0 +1,70 @@
+<div class="home">
+  <!-- Responsive slider - START -->
+  <div class="responsive-slider-parallax" data-spy="responsive-slider" data-parallax="true" data-parallax-direction="1" data-autoplay="true">
+    <div class="slides-container" data-group="slides">
+      <ul>
+        <li>
+          <div class="slide-body" data-group="slide">
+            <div class="container">
+              <div class="wrapper">
+                <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500" data-length="300">
+                  <h2>Paquetes turisticos</h2>
+                  <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">La naturaleza al 100%!</div>
+                </div>
+                <div class="caption img-Infonica" data-animate="slideAppearLeftToRight" data-delay="200">
+                  <img src="img/Infonica.png">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="slide-body" data-group="slide">
+            <div class="container">
+              <div class="wrapper">
+                <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500" data-length="300">
+                  <h2>Lo mejor de Nicaragua</h2>
+                  <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">Visitenos y se sorprendera!</div>
+                </div>
+                <div class="caption img-Viaje" data-animate="slideAppearDownToUp" data-delay="200">
+                  <img src="img/Viaje.png">
+                </div>
+                <div class="caption img-Tour" data-animate="slideAppearUpToDown">
+                  <img src="img/Tour.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="slide-body" data-group="slide">
+            <div class="container">
+              <div class="wrapper">
+                <div class="caption header" data-animate="slideAppearRightToLeft" data-delay="500" data-length="300">
+                  <h2>Precios accesibles</h2>
+                  <div class="caption sub" data-animate="slideAppearLeftToRight" data-delay="800" data-length="300">De todo para todos!</div>
+                </div>
+                <div class="caption img-Paypal" data-animate="slideAppearDownToUp" data-delay="200">
+                  <img src="img/Paypal.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <a class="slider-control left" href="#" data-jump="prev">Prev</a>
+    <a class="slider-control right" href="#" data-jump="next">Next</a>
+    <div class="pages">
+      <a class="page" href="#" data-jump-to="1">1</a>
+      <a class="page" href="#" data-jump-to="2">2</a>
+      <a class="page" href="#" data-jump-to="3">3</a>
+    </div>
+  </div>
+
+</div>
+
+  <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'jquery.event.move', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'responsive-slider', 'data-turbolinks-track' => true %>

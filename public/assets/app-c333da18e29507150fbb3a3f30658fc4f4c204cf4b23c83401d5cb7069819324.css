@@ -1,0 +1,313 @@
+@import url("roboto.css.scss");
+
+/*datepicker*/
+*= require bootstrap-datepicker3
+
+/*timepicker*/
+*= require bootstrap-timepicker
+
+/*datetimepicker*/
+*= require bootstrap
+*= require bootstrap-datetimepicker
+
+body{
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+}
+
+#login-btn{
+background-color:rgb(255,201,14);
+color:#000000;
+}
+
+.White{
+color:#ffffff;
+opacity: 0.8;
+text-shadow: 2px 2px 2px #000;
+}
+
+#user-avatar{
+width: 10%;
+}
+
+#form-body{
+      background-color: #FFFFFF;
+}
+
+
+#PanelTitulo{
+background-color: #AE3910;
+color:#FFFFFF;
+}
+
+#wrapper{
+      border: 1px #e4e4e4 solid;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 0 6px #ccc;
+      background-color: #fff;
+      margin-top: 20px;
+    }
+
+
+#wrapper_product{
+          border: 1px #e4e4e4 solid;
+          padding: 2px;
+          border-radius: 4px;
+          box-shadow: 0 0 6px #ccc;
+          background-color: #fff;
+          margin: 10px;
+
+          min-height: 598px;
+          max-height: 598px;
+
+        }
+
+#product-conteiner{
+  min-height: 585px;
+  max-height: 585px;
+/*  position:relative;*/
+}
+
+#btn-opciones{
+/*position:absolute;
+width: 98%;
+bottom:0;*/
+ }
+
+ #description{
+ min-height: 120px;
+ overflow: auto;
+ }
+
+ @media screen and (max-device-width: 839px) {
+   #description{
+   min-height: none;
+   }
+
+   #product-conteiner{
+     min-height: none;
+     max-height: none;
+   /*  position:relative;*/
+   }
+
+
+   #wrapper_product{
+             min-height: none;
+             max-height: none;
+
+           }
+}
+
+
+#wrapper_1{
+          border: 1px #e4e4e4 solid;
+          padding: 20px;
+          border-radius: 4px;
+          box-shadow: 0 0 6px #ccc;
+          background-color: #fff;
+          margin-right:18px;
+          margin-top: 20px;
+}
+
+/* CSS for Credit Card Payment form */
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.credit-card-box .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+.credit-card-box label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box label {
+    display: block;
+}
+
+.row{
+  margin: 5px;
+}
+
+
+/* End Credit card box*/
+
+
+.paperclip{
+  max-width: 300px;
+}
+
+#product-details{
+  max-width: 100%;
+  border: 1px #e4e4e4 solid;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px #ccc;
+  background-color: #fff;
+}
+
+.content{
+margin-left:20px;
+margin-right:20px;
+}
+
+/*Para carrito en nav bar*/
+.new_Product{
+display: grid;
+margin-bottom: 20px;
+margin-left: 20px;
+}
+
+ul.dropdown-cart{
+    min-width:250px;
+}
+ul.dropdown-cart li .item{
+    display:block;
+    padding:3px 10px;
+    margin: 3px 0;
+}
+ul.dropdown-cart li .item:hover{
+    background-color:#f3f3f3;
+}
+ul.dropdown-cart li .item:after{
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+ul.dropdown-cart li .item-left{
+    float:left;
+}
+ul.dropdown-cart li .item-left img,
+ul.dropdown-cart li .item-left span.item-info{
+    float:left;
+}
+ul.dropdown-cart li .item-left span.item-info{
+    margin-left:10px;
+}
+ul.dropdown-cart li .item-left span.item-info span{
+    display:block;
+}
+ul.dropdown-cart li .item-right{
+    float:right;
+}
+ul.dropdown-cart li .item-right button{
+    margin-top:14px;
+}
+
+.list-cart{
+margin-right: 20px;
+padding-right: 20px;
+
+margin-left: 20px;
+padding-left: 20px;
+}
+
+/*Para animacion en logo*/
+.logo{
+margin-left:10px;
+float:left;
+background-color: transparent;
+-webkit-transition:-webkit-transform 0.5s ease-in;
+-o-transition:-o-transform 0.5s ease-in;
+}
+
+.logo:hover,
+.logo:focus{
+background-color:transparent;
+
+-moz-transform:scale(1.1);
+-webkit-transform:scale(1.1);
+-o-transform:scale(1.1);
+}
+
+.zoom_img .zoom{
+-webkit-transition:-webkit-transform 0.5s ease-in;
+-o-transition:-o-transform 0.5s ease-in;
+}
+.zoom_img .zoom:hover,
+.zoom_img .zoom:focus{
+background-color:#DD4814;
+-moz-transform:scale(1.1);
+-webkit-transform:scale(1.1);
+-o-transform:scale(1.1);
+}
+
+.zoom_img .zoom{
+-webkit-transition:-webkit-transform 0.5s ease-in;
+-o-transition:-o-transform 0.5s ease-in;
+}
+.zoom_img .zoom:hover,
+.zoom_img .zoom:focus{
+background-color:#DD4814;
+-moz-transform:scale(1.1);
+-webkit-transform:scale(1.1);
+-o-transform:scale(1.1);
+}
+
+
+
+/* Tabla responsive*/
+@media only screen and (max-width: 800px) {
+
+    /* Force table to not be like tables anymore */
+	#no-more-tables table,
+	#no-more-tables thead,
+	#no-more-tables tbody,
+	#no-more-tables th,
+	#no-more-tables td,
+	#no-more-tables tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	#no-more-tables thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	#no-more-tables tr { border: 1px solid #ccc; }
+
+	#no-more-tables td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+		white-space: normal;
+		text-align:left;
+	}
+
+	#no-more-tables td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		text-align:left;
+		font-weight: bold;
+	}
+
+	/*
+	Label the data
+	*/
+	#no-more-tables td:before { content: attr(data-title); }
+}

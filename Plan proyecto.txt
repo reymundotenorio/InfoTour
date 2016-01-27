@@ -1,0 +1,27 @@
+combo 1 -> (3 días y 2 noches) managua-san carlos- castillo- tour
+
+microbus -> managua <-> san carlos
+panga rapida -> san carlos <-> el castillo
+hospedaje 2 noches-> el castillo
+alimentación ->  3 almuerzos, 2 cenas y 2 desayunos
+tour-> el castillo<-> reserva indio maíz
+
+
+combo 2 -> (2 días y 1 noche) san carlos- el castillo - tour
+
+panga rapida -> san carlos <-> el castillo
+hospedaje 1 noche-> el castillo
+alimentación ->  1 almuerzo, 1 cena
+tour-> el castillo<-> reserva indio maíz
+
+combo 3 -> (el castillo - tour)
+
+tour-> el castillo<-> reserva indio maíz
+
+
+Tarea para el dia sabado 10 de octubre del 2015
+hablar de web ml 
+
+Rey-> 201-100792-0006U
+Erick-> 042-130792-0000E
+

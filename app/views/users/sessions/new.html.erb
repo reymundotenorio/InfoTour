@@ -1,0 +1,75 @@
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<!-- start Login box -->
+    	<div class="container" id="login-block">
+    		<div class="row">
+			    <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+			       <div class="page-icon-shadow animated bounceInDown" > </div>
+			       <div class="login-box clearfix animated flipInY">
+			       		<div class="page-icon animated bounceInDown">
+			       			 <i class="glyphicon glyphicon-user"></i>
+			       		</div>
+			        	<div class="login-logo">
+                  <h1 class="White">InfoTour</h1>
+                  <h3 class="White">Iniciar Sesion</h3>
+			        		<a href="#"><img src="/img/Infonica.png" alt="InfoTour" style="width:40%;"/></a>
+			        	</div>
+			        	<hr />
+			        	<div class="login-form">
+			        		<!-- Start Error box -->
+			        		<div class="alert alert-danger hide">
+								  <button type="button" class="close" data-dismiss="alert"> &times;</button>
+								  <h4>Error!</h4>
+								   Your Error Message goes here
+							</div> <!-- End Error box -->
+
+                  <%= f.email_field :email, autofocus: true, placeholder:"Correo electronico", class: "input-field", required: true  %>
+						   		<%= f.password_field :password, autocomplete: "off", placeholder:"Contrasena", class: "input-field", required: true %>
+
+                    <%= f.submit "Iniciar sesion", class:"btn btn-login", id:"login-btn" %>
+
+
+                    <!--  <% if devise_mapping.rememberable? -%>
+                        <div class="field">
+                          <%= f.check_box :remember_me %>
+                          <%= f.label :remember_me %>
+                        </div>
+                      <% end -%> -->
+
+
+							<div class="login-links">
+
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  <%= link_to "Olvido su Contrasena?", new_password_path(resource_name) %><br />
+                <% end -%>
+					            <br />
+                      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                        <%= link_to "Registrarse", new_registration_path(resource_name) %><br />
+                      <% end -%>
+							</div>
+			        	</div>
+			       </div>
+
+			       <!-- Start Social connect buttons box -->
+
+			       <!-- <div class="social-login row">
+			        		<div class="fb-login col-lg-6 col-md-12 animated flipInX">
+			        			<a href="#" class="btn btn-facebook btn-block">Connect with <strong>Facebook</strong></a>
+			        		</div>
+			        		<div class="twit-login col-lg-6 col-md-12 animated flipInX">
+			        			<a href="#" class="btn btn-twitter btn-block">Connect with <strong>Twitter</strong></a>
+			        		</div>
+			        </div> -->
+
+			        <!-- End Social connect buttons box -->
+
+			    </div>
+			</div>
+    	</div>
+
+
+
+      	<!-- End Login box -->
+
+        <% end %>

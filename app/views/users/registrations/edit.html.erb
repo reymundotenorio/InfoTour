@@ -1,0 +1,253 @@
+<div class="page-header">
+<h1>Editar Usuario</h1>
+</div>
+
+<div class="container">
+<div class="row">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+
+   <div class="col-xs-12 col-md-7" id ="wrapper_1">
+
+     <!-- CREDIT CARD FORM STARTS HERE -->
+     <div class="panel panel-default credit-card-box" id="form-body">
+         <div class="panel-heading display-table" id="PanelTitulo">
+             <div class="row display-tr" >
+                 <h3 class="panel-title display-td" >Detalles de usuario</h3>
+                 <div class="display-td" >
+                       <img class="img-responsive pull-right" id="user-avatar" src="/img/avatar-user.png">
+                 </div>
+             </div>
+         </div>
+
+
+
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="form-group">
+                  <label for="couponCode">Nombre</label>
+                    <%= f.text_field :first_name , class:"form-control", placeholder:"Nombre", autofocus: true, required: true %>
+              </div>
+          </div>
+      </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="couponCode">Apellido</label>
+                          <%= f.text_field :last_name, class:"form-control", placeholder:"Apellido", required: true %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="couponCode">No. Telefonico</label>
+                          <%= f.telephone_field :cel, class:"form-control", placeholder:"No. Telefonico", required: true %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="couponCode">Pais</label>
+                          <%= f.text_field :country, class:"form-control", placeholder:"Pais", required: true %>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="couponCode">Correo</label>
+                          <%= f.email_field :email, class:"form-control", placeholder:"Correo", required: true %>
+
+                          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                          <% end %>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="couponCode">Contrasena</label>
+                          <i>(Dejar en blanco sino quiere cambiarla)</i><br/>
+                        <%= f.password_field :password, class:"form-control", autocomplete: "off" %>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="couponCode">Confirmar Contrasena</label>
+                        <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "off"%>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="couponCode">Contrasena Actual</label>
+                          <i>(Necesitamos su contrasena actual para confirmar los cambios)</i><br/>
+                        <%= f.password_field :current_password, class:"form-control", autocomplete: "off", required: true  %>
+                    </div>
+                </div>
+            </div>
+
+
+  </div>
+
+  </div>
+
+
+          <!-- You can make it whatever width you want. I'm making it full width
+               on <= small devices and 4/12 page width on >= medium devices -->
+          <div class="col-xs-12 col-md-4" id ="wrapper">
+
+
+              <!-- CREDIT CARD FORM STARTS HERE -->
+              <div class="panel panel-default credit-card-box" id="form-body">
+                  <div class="panel-heading display-table" id="PanelTitulo">
+                      <div class="row display-tr" >
+                          <h3 class="panel-title display-td" >Detalles de pago</h3>
+                          <div class="display-td" >
+                              <img class="img-responsive pull-right" src="/img/credit-card.png">
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row">
+
+                          <div class="form-group">
+
+                              <div class="card-wrapper"></div>
+
+                        </div>
+                      </div>
+
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="form-group">
+
+                      <label for="cardNumber">Numero de Tarjeta</label>
+                      <div class="input-group">
+                          <%= f.telephone_field :no_tarjet, class:"form-control",
+                          placeholder:"Numero de Tarjeta", required: true %>
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="form-group">
+                      <label for="couponCode">Nombre del acreedor</label>
+                        <%= f.text_field :tarjet_user, class:"form-control",
+                        placeholder:"Nombre Acreedor",required: true%>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-xs-7 col-md-7">
+                  <div class="form-group">
+                      <label for="cardExpiry"><span class="hidden-xs">Expiracion</span><span class="visible-xs-inline">Exp</span> Fecha</label>
+                      <%= f.telephone_field :expiration_date, class:"form-control",
+                      placeholder:"MM/YY", required: true %>
+                    </div>
+              </div>
+              <div class="col-xs-5 col-md-5 pull-right">
+                  <div class="form-group">
+                      <label for="cardCVC">CVC</label>
+                      <%= f.telephone_field :CVC, class:"form-control",
+                      placeholder:"CVC", required: true %>
+
+                  </div>
+              </div>
+          </div>
+
+
+
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Actualizar", class:"btn btn-success btn-lg btn-block" %>
+            </div>
+
+            </div>
+
+
+
+<% end %>
+
+
+
+<div class="col-xs-12 col-md-4" id ="wrapper">
+
+
+    <!-- CANCEL CUENTA FORM STARTS HERE -->
+    <div class="panel panel-default credit-card-box" id="form-body">
+        <div class="panel-heading display-table" id="PanelTitulo">
+            <div class="row display-tr" >
+                <h3 class="panel-title display-td" >Cancelar mi cuenta</h3>
+                <div class="display-td" >
+
+                </div>
+            </div>
+        </div>
+
+<div class="row">
+    <div class="col-xs-7 col-md-7">
+        <div class="form-group">
+            <label for="cardExpiry"><span class="hidden-xs">No esta feliz con nosotros?</span></label>
+
+          </div>
+    </div>
+</div>
+
+
+
+  </div>
+
+  <div class="actions">
+    <%= button_to "Cancelar mi Cuenta", registration_path(resource_name), data: { confirm: "Esta seguro?" }, method: :delete,  class:"btn btn-danger btn-lg btn-block" %>
+  </div>
+
+
+</div>
+
+</div>
+</div>
+
+
+<%= javascript_include_tag 'card' %>
+
+<script>
+       new Card({
+           form: document.querySelector('form'),
+           container: '.card-wrapper',
+           formSelectors: {
+           numberInput: 'input#user_no_tarjet', // optional — default input[name="number"]
+           expiryInput: 'input#user_expiration_date', // optional — default input[name="expiry"]
+           cvcInput: 'input#user_CVC', // optional — default input[name="cvc"]
+           nameInput: 'input#user_tarjet_user' // optional - defaults input[name="name"]
+       }
+       });
+   </script>
+
+
+
+<%= link_to "Regresar", :back, class:"btn btn-info", style:"margin-left: 35px; margin-top: 20px;" %>
